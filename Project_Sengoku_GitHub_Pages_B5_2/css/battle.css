@@ -1,0 +1,94 @@
+:root {
+  color-scheme: dark;
+  --bg: #11130f;
+  --panel: #1b1f18;
+  --panel2: #242a21;
+  --line: #424a3c;
+  --text: #f4f1e8;
+  --muted: #b8b3a8;
+  --gold: #d7b45a;
+  --player: #3f8bd7;
+  --enemy: #d2524a;
+  --morale: #7cc576;
+  --troop: #e8d17d;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: radial-gradient(circle at top, #20251c, var(--bg) 60%); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif; }
+button, input { font: inherit; }
+button { min-height: 44px; border-radius: 10px; border: 1px solid #59634f; background: #2a3027; color: var(--text); padding: 9px 14px; cursor: pointer; touch-action: manipulation; }
+button:hover { border-color: var(--gold); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.app-shell { width: min(1600px, 100%); margin: 0 auto; padding: max(14px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left)); }
+.topbar { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:14px; }
+.eyebrow { color:var(--gold); font-size:12px; letter-spacing:.13em; }
+h1 { margin:4px 0 0; font-size:clamp(22px,3vw,34px); }
+h2 { margin:0 0 10px; font-size:16px; }
+.seed-panel { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.seed-panel label { color:var(--muted); font-size:13px; }
+.seed-panel input { width:145px; min-height:44px; border:1px solid #59634f; border-radius:8px; background:#11150f; color:var(--text); padding:8px 10px; }
+.layout { display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:14px; }
+.battle-card, .hud-card { background:rgba(27,31,24,.96); border:1px solid var(--line); border-radius:16px; box-shadow:0 18px 45px rgba(0,0,0,.24); }
+.battle-card { padding:12px; }
+.hud-card { padding:14px; display:flex; flex-direction:column; gap:14px; }
+.battle-status-row { display:flex; justify-content:space-between; gap:10px; margin-bottom:8px; font-size:13px; color:var(--muted); }
+.battle-status { color:var(--gold); font-weight:700; }
+.battlefield-wrap { position:relative; width:100%; aspect-ratio:3/2; overflow:hidden; border-radius:12px; border:1px solid #48503f; background:#6f8060; touch-action:none; }
+#battlefield { width:100%; height:100%; display:block; background:#75866a; }
+.floating-message { position:absolute; left:50%; top:18%; transform:translate(-50%,-50%); color:#fff7d6; font-weight:900; font-size:clamp(24px,6vw,56px); text-shadow:0 2px 8px #000; pointer-events:none; opacity:0; transition:opacity .15s; }
+.floating-message.show { opacity:1; }
+.legend { display:flex; flex-wrap:wrap; gap:12px; margin-top:10px; color:var(--muted); font-size:12px; }
+.legend span { display:flex; align-items:center; gap:6px; }
+.swatch { width:15px; height:15px; border-radius:3px; display:inline-block; }
+.swatch.player { background:var(--player); }
+.swatch.enemy { background:var(--enemy); }
+.front-line { width:18px; height:10px; border-top:4px solid #fff; display:inline-block; }
+.dash-sample { width:18px; height:12px; border:2px dashed #fff; display:inline-block; }
+.speed-controls { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
+.speed-btn.active { background:#735d25; border-color:var(--gold); }
+.unit-panel, .order-panel, .howto, .result-panel { background:var(--panel2); border:1px solid #394035; border-radius:12px; padding:12px; }
+.muted { color:var(--muted); }
+.unit-stats { margin:0; display:grid; gap:7px; }
+.unit-stats div { display:flex; justify-content:space-between; gap:10px; border-bottom:1px solid #3d4438; padding-bottom:5px; }
+.unit-stats dt { color:var(--muted); }
+.unit-stats dd { margin:0; text-align:right; font-variant-numeric:tabular-nums; }
+.order-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.order-btn.selected { border-color:var(--gold); background:#735d25; }
+.order-hint { color:var(--muted); font-size:13px; min-height:2.6em; margin:10px 0 0; }
+.howto ol { padding-left:20px; margin:0; color:var(--muted); font-size:13px; line-height:1.65; }
+.result-panel pre { max-height:220px; overflow:auto; white-space:pre-wrap; word-break:break-word; font-size:11px; background:#0f120e; padding:10px; border-radius:8px; }
+@media (max-width: 900px) {
+  .topbar { align-items:flex-start; flex-direction:column; }
+  .layout { grid-template-columns:1fr; }
+  .hud-card { display:grid; grid-template-columns:1fr 1fr; }
+  .speed-controls, .result-panel { grid-column:1 / -1; }
+}
+@media (max-width: 600px) {
+  .app-shell { padding:8px max(8px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); }
+  .topbar { gap:10px; }
+  .seed-panel { width:100%; }
+  .seed-panel input { flex:1; min-width:0; }
+  .battle-card { padding:7px; }
+  .battlefield-wrap { aspect-ratio:3/2; }
+  .hud-card { display:flex; padding:8px; gap:8px; }
+  .unit-panel, .order-panel, .howto, .result-panel { padding:10px; }
+  .order-grid { grid-template-columns:repeat(4,1fr); }
+  .order-btn { padding:7px 4px; font-size:12px; }
+  .legend { gap:8px; font-size:10px; }
+}
+.subtitle { margin:5px 0 0; color:var(--muted); font-size:12px; }
+.charge-line { width:18px; height:10px; border-top:5px solid #ffb44d; display:inline-block; }
+.charge-btn:not(:disabled) { border-color:#a86c24; }
+.charge-btn.selected { background:#8a4f18; border-color:#ffb44d; }
+@media (max-width: 600px) {
+  .order-grid { grid-template-columns:repeat(3,1fr); }
+  .floating-message { top:15%; font-size:clamp(22px,8vw,42px); }
+}
+
+/* B5.2: finger-drawn route input */
+#battlefield { touch-action:none; user-select:none; -webkit-user-select:none; cursor:crosshair; }
+.route-line { width:24px; height:10px; border-top:5px solid #ffe45c; display:inline-block; position:relative; }
+.route-line::after { content:""; position:absolute; right:-2px; top:-8px; border-left:8px solid #ffe45c; border-top:5px solid transparent; border-bottom:5px solid transparent; }
+@media (max-width: 600px) {
+  .battle-status-row { font-size:11px; }
+  .order-hint { font-size:12px; }
+}

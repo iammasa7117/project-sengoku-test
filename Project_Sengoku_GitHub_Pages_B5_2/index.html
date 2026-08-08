@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171717">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sengoku">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>Project Sengoku Tactical Prototype B5.2</title>
+  <link rel="stylesheet" href="css/battle.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">PROJECT SENGOKU / TACTICAL PROTOTYPE</div>
+        <h1>会戦プロトタイプ B5.2</h1>
+        <p class="subtitle">指なぞり経路 / Waypoints / 移動後Facing指定 / B5.1戦闘ルール維持</p>
+      </div>
+      <div class="seed-panel">
+        <label for="seedInput">Seed</label>
+        <input id="seedInput" inputmode="numeric" value="1597463007" aria-label="seed">
+        <button id="restartBtn" type="button">再戦</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="battle-card">
+        <div class="battle-status-row">
+          <div id="battleStatus" class="battle-status">待機中</div>
+          <div id="timeStatus" class="time-status">停止</div>
+        </div>
+        <div id="battlefieldWrap" class="battlefield-wrap">
+          <canvas id="battlefield" width="1500" height="1000" aria-label="戦場"></canvas>
+          <div id="floatingMessage" class="floating-message" aria-live="polite"></div>
+        </div>
+        <div class="legend">
+          <span><i class="swatch player"></i>自軍</span>
+          <span><i class="swatch enemy"></i>敵軍</span>
+          <span><i class="route-line"></i>黄 = 指で描く経路</span>
+          <span><i class="front-line"></i>太線＋▲ = 正面</span>
+          <span><i class="charge-line"></i>橙 = 突撃中</span>
+          <span><i class="dash-sample"></i>点線 = 敗走中</span>
+        </div>
+      </section>
+
+      <aside class="hud-card">
+        <section class="speed-controls" aria-label="時間操作">
+          <button type="button" data-speed="0" class="speed-btn active">停止</button>
+          <button type="button" data-speed="1" class="speed-btn">通常</button>
+          <button type="button" data-speed="3" class="speed-btn">3倍速</button>
+        </section>
+
+        <section class="unit-panel">
+          <h2>選択部隊</h2>
+          <div id="unitEmpty" class="muted">部隊を選択してください</div>
+          <div id="unitDetails" hidden>
+            <dl class="unit-stats">
+              <div><dt>武将</dt><dd id="detailOfficer">-</dd></div>
+              <div><dt>兵科</dt><dd id="detailType">-</dd></div>
+              <div><dt>役割</dt><dd id="detailRole">-</dd></div>
+              <div><dt>速度</dt><dd id="detailSpeed">-</dd></div>
+              <div><dt>射程</dt><dd id="detailRange">-</dd></div>
+              <div><dt>装填</dt><dd id="detailReload">-</dd></div>
+              <div><dt>兵力</dt><dd id="detailTroops">-</dd></div>
+              <div><dt>士気</dt><dd id="detailMorale">-</dd></div>
+              <div><dt>状態</dt><dd id="detailStatus">-</dd></div>
+              <div><dt>命令</dt><dd id="detailOrder">-</dd></div>
+              <div><dt>突撃</dt><dd id="detailCharge">-</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="order-panel">
+          <h2>命令</h2>
+          <div class="order-grid">
+            <button id="moveBtn" type="button" class="order-btn">移動</button>
+            <button id="attackBtn" type="button" class="order-btn">攻撃</button>
+            <button id="chargeBtn" type="button" class="order-btn charge-btn">突撃</button>
+            <button id="retreatBtn" type="button" class="order-btn">後退</button>
+            <button id="waitBtn" type="button" class="order-btn">待機</button>
+          </div>
+          <p id="orderHint" class="order-hint">部隊を押したまま指で経路をなぞり、指を離して移動後の向きを選べます。</p>
+        </section>
+
+        <section class="howto">
+          <h2>B5.2 新しい移動操作</h2>
+          <ol>
+            <li>自軍部隊の上に指を置く</li>
+            <li>押したまま、移動させたい経路を自由になぞる</li>
+            <li>黄色い経路線を確認して指を離す</li>
+            <li>表示される8方向の矢印から、移動後に向く方向を選ぶ</li>
+            <li>部隊は経路に沿って移動し、到着後に指定方向を向く</li>
+            <li>従来の「移動 / 攻撃 / 突撃」ボタンもそのまま使用可能</li>
+          </ol>
+        </section>
+
+        <section class="result-panel" id="resultPanel" hidden>
+          <h2>戦闘結果</h2>
+          <pre id="resultJson"></pre>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script defer src="js/core/rng.js"></script>
+  <script defer src="js/core/vec.js"></script>
+  <script defer src="js/core/clock.js"></script>
+  <script defer src="js/model/unitTypes.js"></script>
+  <script defer src="js/model/battleUnit.js"></script>
+  <script defer src="js/model/battleState.js"></script>
+  <script defer src="js/sim/movement.js"></script>
+  <script defer src="js/sim/combat.js"></script>
+  <script defer src="js/sim/morale.js"></script>
+  <script defer src="js/sim/step.js"></script>
+  <script defer src="js/ui/render.js"></script>
+  <script defer src="js/ui/input.js"></script>
+  <script defer src="js/ui/hud.js"></script>
+  <script defer src="js/main.js"></script>
+</body>
+</html>

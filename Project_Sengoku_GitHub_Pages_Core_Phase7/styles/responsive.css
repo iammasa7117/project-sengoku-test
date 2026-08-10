@@ -1,0 +1,232 @@
+@media (max-width: 1050px) {
+  .topbar { grid-template-columns: 1fr 44px; }
+  .resources { grid-column: 1 / 3; overflow: auto; }
+  .game-layout { grid-template-columns: 1fr; grid-template-areas: "map" "side" "council"; }
+  .side-panel { min-height: auto; }
+  .proposals { grid-template-columns: 1fr; }
+  .map-area { height: 430px; }
+}
+@media (max-width: 620px) {
+  .event-view { max-height: calc(100vh - 72px); }
+  .title-box { margin-left: 20px; padding-top: 85px; }
+  .map-area { height: 390px; }
+  .castle { width: 105px; padding: 8px; }
+  .castle strong { font-size: 12px; }
+  .command-grid { grid-template-columns: 1fr 1fr; }
+  .debug-actions { grid-template-columns: 1fr; }
+  .diplomacy-stats { grid-template-columns: 1fr 1fr; }
+  .diplomacy-actions { grid-template-columns: 1fr 1fr; }
+  .diplomacy-actions .button { min-height: 58px; }
+}
+
+@media (max-width: 1050px) {
+  body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+  .guide-panel { margin-top: 10px; }
+  .guide-primary { align-items: flex-start; }
+  .tutorial-checklist { grid-template-columns: 1fr auto; }
+  .tutorial-checklist ol { grid-column: 1 / 3; }
+  .mobile-nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; display: grid; grid-template-columns: repeat(5,1fr); padding: 7px 7px calc(7px + env(safe-area-inset-bottom)); background: rgba(8,12,18,.98); border-top: 1px solid #3d4b61; box-shadow: 0 -10px 30px rgba(0,0,0,.42); }
+  .mobile-nav button { min-height: 46px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: #c2ccd8; font-size: 10px; font-weight: 900; }
+  body.modal-open .mobile-nav { visibility: hidden; pointer-events: none; }
+}
+@media (max-width: 620px) {
+  .topbar { position: sticky; top: 0; z-index: 20; gap: 8px; padding: 10px 12px; }
+  .topbar h2 { font-size: 20px; }
+  .resources { gap: 5px; padding-bottom: 3px; scroll-snap-type: x proximity; }
+  .resource { min-width: 82px; scroll-snap-align: start; }
+  .guide-panel { padding: 0 10px; }
+  .guide-primary { display: block; padding: 12px; }
+  .guide-actions { margin-top: 10px; }
+  .guide-actions .button { flex: 1 1 130px; min-height: 46px; }
+  .tutorial-checklist { display: block; }
+  .tutorial-checklist ol { display: grid; gap: 6px; margin: 9px 0; }
+  .game-layout { padding: 10px 10px 24px; }
+  .map-panel { overflow: hidden; }
+  .map-scroll-shell { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; }
+  .map-area { width: 760px; height: 390px; }
+  .panel-heading { min-height: 58px; padding: 11px 12px; }
+  .panel-heading h3 { font-size: 19px; }
+  .castle { width: 112px; min-height: 48px; }
+  .command, .choice, .button, .end-turn, .icon-button, .text-button { min-height: 44px; }
+  .officer-line { min-height: 52px; }
+  .modal-backdrop { align-items: end; padding: 0; }
+  .modal { width: 100%; max-height: 92dvh; border-radius: 14px 14px 0 0; padding: 22px 16px calc(22px + env(safe-area-inset-bottom)); }
+  .modal h2 { font-size: 24px; padding-right: 35px; }
+  .modal-actions { display: grid; grid-template-columns: 1fr; }
+  .modal-actions .button { width: 100%; }
+  .help-grid { grid-template-columns: 1fr; }
+  .glossary { grid-template-columns: 1fr; }
+  .glossary dd { margin-bottom: 8px; }
+  .toggle-row { align-items: flex-start; }
+  .toast { width: calc(100vw - 24px); bottom: calc(78px + env(safe-area-inset-bottom)); text-align: center; }
+}
+
+@media (max-width: 620px) {
+  .ending-stats { grid-template-columns: 1fr 1fr; }
+  .ending-stats strong { font-size: 12px; }
+  .record p, .proposal p, .modal p, .choice small { overflow-wrap: anywhere; }
+}
+
+/* Phase 2 mobile-first Army controls */
+@media (max-width: 620px) {
+  .army-marker { min-width: 102px; min-height: 48px; padding: 6px 7px 6px 31px; }
+  .army-marker strong { font-size: 10px; }
+  .army-marker small { font-size: 7px; }
+  .army-summary-strip { grid-template-columns: repeat(3,minmax(76px,1fr)); overflow-x: auto; }
+  .army-unit-row { grid-template-columns: 1fr 1fr; }
+  .army-unit-card select, .army-unit-card input { min-height: 46px; font-size: 16px; }
+}
+@media (orientation: landscape) and (max-height: 520px) {
+  body { padding-bottom: calc(58px + env(safe-area-inset-bottom)); }
+  .topbar { padding-top: calc(6px + env(safe-area-inset-top)); padding-left: calc(10px + env(safe-area-inset-left)); padding-right: calc(10px + env(safe-area-inset-right)); }
+  .resources { max-height: 48px; }
+  .game-layout { padding-left: calc(8px + env(safe-area-inset-left)); padding-right: calc(8px + env(safe-area-inset-right)); }
+  .map-area { height: 330px; }
+  .mobile-nav { padding-left: calc(7px + env(safe-area-inset-left)); padding-right: calc(7px + env(safe-area-inset-right)); }
+  .modal { max-height: 96dvh; padding-top: 16px; }
+  .army-unit-builder { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .army-unit-row { grid-template-columns: 1fr; }
+}
+
+
+/* Phase 3 Domestic MVP mobile-first economy cards */
+@media (max-width: 620px) {
+  .domestic-stats { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .domestic-economy-strip { grid-template-columns: repeat(4,minmax(84px,1fr)); overflow-x: auto; overscroll-behavior-x: contain; padding-bottom: 2px; }
+  .domestic-economy-strip span { scroll-snap-align: start; min-height: 48px; }
+  .command-grid .command { min-height: 58px; }
+}
+@media (orientation: landscape) and (max-height: 520px) {
+  .domestic-economy-strip { grid-template-columns: repeat(4,minmax(92px,1fr)); }
+  .castle-detail { padding: 10px; }
+  .domestic-stats { margin: 8px 0; }
+}
+
+@media (max-width: 950px) and (orientation: landscape) {
+  .siege-status-card, .siege-result { padding: 9px 10px; margin: 8px 0; }
+  .siege-status-card p, .siege-result p { font-size: 12px; line-height: 1.45; }
+  .siege-status-card small, .siege-result small { font-size: 10px; }
+}
+
+/* Phase 6 — landscape smartphone game shell, not a shrunken desktop page */
+@media (max-width: 950px) and (orientation: landscape) {
+  body.game-active.mobile-campaign { height: 100dvh; overflow: hidden; padding-bottom: 0; overscroll-behavior: none; }
+  body.game-active.mobile-campaign #gameScreen { height: 100dvh; min-height: 0; overflow: hidden; }
+  body.game-active.mobile-campaign .topbar {
+    position: relative; top: auto; z-index: 30; min-height: 54px; height: 54px;
+    grid-template-columns: minmax(128px,170px) 1fr 42px; gap: 7px;
+    padding: calc(5px + env(safe-area-inset-top)) calc(8px + env(safe-area-inset-right)) 5px calc(8px + env(safe-area-inset-left));
+  }
+  body.game-active.mobile-campaign .topbar .kicker { margin-bottom: 1px; font-size: 7px; }
+  body.game-active.mobile-campaign .topbar h2 { font-size: 17px; line-height: 1.05; white-space: nowrap; }
+  body.game-active.mobile-campaign .resources { grid-column: auto; display: grid; grid-template-columns: repeat(3,minmax(54px,1fr)); gap: 4px; overflow: visible; padding: 0; }
+  body.game-active.mobile-campaign .resource { min-width: 0; padding: 4px 6px; border-radius: 5px; }
+  body.game-active.mobile-campaign .resource span { font-size: 7px; }
+  body.game-active.mobile-campaign .resource strong { display: block; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  body.game-active.mobile-campaign .resource-faction,
+  body.game-active.mobile-campaign .resource-castles,
+  body.game-active.mobile-campaign .resource-army { display: none; }
+  body.game-active.mobile-campaign .icon-button { width: 40px; height: 40px; min-height: 40px; }
+
+  body.game-active.mobile-campaign #guidePanel { display: none !important; }
+  body.game-active.mobile-campaign .game-layout {
+    display: block; width: 100%; max-width: none; height: calc(100dvh - 108px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    margin: 0; padding: 5px calc(6px + env(safe-area-inset-right)) 5px calc(6px + env(safe-area-inset-left)); overflow: hidden;
+  }
+  body.game-active.mobile-campaign .game-layout > .panel { display: none; height: 100%; min-height: 0; border-radius: 8px; overflow: hidden; }
+  body.game-active.mobile-campaign[data-mobile-view="map"] #mapPanel,
+  body.game-active.mobile-campaign[data-mobile-view="side"] #sidePanel,
+  body.game-active.mobile-campaign[data-mobile-view="council"] #councilPanel { display: flex; flex-direction: column; }
+
+  body.game-active.mobile-campaign .panel-heading { flex: 0 0 42px; min-height: 42px; height: 42px; padding: 6px 10px; }
+  body.game-active.mobile-campaign .panel-heading .kicker { font-size: 7px; margin-bottom: 1px; }
+  body.game-active.mobile-campaign .panel-heading h3 { font-size: 16px; }
+  body.game-active.mobile-campaign .goal { max-width: 48%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
+
+  body.game-active.mobile-campaign .map-scroll-shell { flex: 1 1 auto; min-height: 0; overflow: hidden; }
+  body.game-active.mobile-campaign .map-area { width: 100%; height: 100%; min-height: 0; }
+  body.game-active.mobile-campaign .map-note { left: 7px; bottom: 7px; max-width: 50%; padding: 5px 7px; font-size: 8px; line-height: 1.3; pointer-events: none; }
+  body.game-active.mobile-campaign .castle { width: 92px; min-height: 42px; padding: 5px 7px; transform: translate(-50%,-50%); }
+  body.game-active.mobile-campaign .castle strong { font-size: 10px; }
+  body.game-active.mobile-campaign .castle small { font-size: 7px; }
+  body.game-active.mobile-campaign .army-marker { min-width: 88px; min-height: 40px; padding: 5px 6px 5px 27px; transform: translate(-50%,-50%); }
+  body.game-active.mobile-campaign .army-flag { left: 6px; top: 7px; width: 17px; height: 25px; font-size: 10px; }
+
+  body.game-active.mobile-campaign .mobile-selection-dock {
+    position: absolute; left: calc(10px + env(safe-area-inset-left)); right: calc(10px + env(safe-area-inset-right)); bottom: 8px; z-index: 16;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 54px; padding: 6px 7px;
+    border: 1px solid #526077; border-radius: 10px; background: rgba(8,13,20,.94); box-shadow: 0 8px 28px rgba(0,0,0,.45); backdrop-filter: blur(8px);
+  }
+  body.game-active.mobile-campaign .map-panel { position: relative; }
+  body.game-active.mobile-campaign .mobile-selection-copy { display: flex; align-items: center; gap: 7px; min-width: 0; }
+  body.game-active.mobile-campaign .mobile-selection-copy > div { min-width: 0; }
+  body.game-active.mobile-campaign .mobile-selection-copy small,
+  body.game-active.mobile-campaign .mobile-selection-copy strong,
+  body.game-active.mobile-campaign .mobile-selection-copy span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  body.game-active.mobile-campaign .mobile-selection-copy small { color: var(--muted); font-size: 7px; }
+  body.game-active.mobile-campaign .mobile-selection-copy strong { color: #fff2ca; font-size: 13px; }
+  body.game-active.mobile-campaign .mobile-selection-copy span { color: #c4ceda; font-size: 8px; }
+  body.game-active.mobile-campaign .mobile-selection-seal { flex: 0 0 34px; display: grid !important; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid #82672d; background: #372d17; color: #f3d47f; font: 800 12px/1 Georgia,"Yu Mincho",serif; }
+  body.game-active.mobile-campaign .mobile-selection-seal.enemy { border-color: #8a403c; background: #351c1d; color: #f3aaa3; }
+  body.game-active.mobile-campaign .mobile-selection-actions { display: flex; gap: 5px; flex: 0 0 auto; }
+  body.game-active.mobile-campaign .mobile-selection-actions .button { min-height: 38px; padding: 7px 11px; font-size: 10px; }
+
+  body.game-active.mobile-campaign #sidePanel,
+  body.game-active.mobile-campaign #councilPanel { overflow-y: auto; overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch; }
+  body.game-active.mobile-campaign #sidePanel .castle-detail { padding: 8px 10px; }
+  body.game-active.mobile-campaign #sidePanel .log-wrap { margin-top: 0; padding: 8px 10px 12px; }
+  body.game-active.mobile-campaign #sidePanel .event-log { height: 76px; }
+  body.game-active.mobile-campaign .domestic-stats { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px; }
+  body.game-active.mobile-campaign .stat-grid > div { padding: 6px; }
+  body.game-active.mobile-campaign .stat-grid span { font-size: 7px; }
+  body.game-active.mobile-campaign .stat-grid strong { font-size: 11px; }
+  body.game-active.mobile-campaign .domestic-economy-strip { grid-template-columns: repeat(4,minmax(0,1fr)); overflow: visible; gap: 5px; margin: 6px 0; }
+  body.game-active.mobile-campaign .domestic-economy-strip span { min-height: 0; padding: 5px 6px; font-size: 7px; }
+  body.game-active.mobile-campaign .domestic-economy-strip strong { font-size: 10px; }
+  body.game-active.mobile-campaign .officer-line { min-height: 38px; padding-top: 5px; padding-bottom: 5px; }
+  body.game-active.mobile-campaign .officer-line small { font-size: 7px; }
+  body.game-active.mobile-campaign .command-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px; }
+  body.game-active.mobile-campaign .command-grid .command { min-height: 48px; padding: 6px; }
+  body.game-active.mobile-campaign .command-grid .command strong { font-size: 9px; }
+  body.game-active.mobile-campaign .command-grid .command small { font-size: 6.5px; line-height: 1.25; }
+  body.game-active.mobile-campaign .proposals { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; padding: 7px; }
+  body.game-active.mobile-campaign .proposal { min-height: 0; padding: 8px; }
+  body.game-active.mobile-campaign .proposal h4 { margin: 3px 0; font-size: 12px; }
+  body.game-active.mobile-campaign .proposal p { margin: 4px 0; font-size: 8px; line-height: 1.35; }
+  body.game-active.mobile-campaign .proposal .button { min-height: 38px; padding: 6px 8px; font-size: 9px; }
+
+  body.game-active.mobile-campaign .mobile-nav {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; height: calc(54px + env(safe-area-inset-bottom));
+    display: grid; grid-template-columns: repeat(5,1fr); gap: 4px; padding: 4px calc(6px + env(safe-area-inset-right)) calc(4px + env(safe-area-inset-bottom)) calc(6px + env(safe-area-inset-left));
+    background: rgba(7,11,17,.98); border-top: 1px solid #3d4b61; box-shadow: 0 -8px 26px rgba(0,0,0,.46);
+  }
+  body.game-active.mobile-campaign .mobile-nav button { min-height: 44px; padding: 3px 2px; border-radius: 7px; }
+  body.game-active.mobile-campaign .modal-backdrop { z-index: 200; }
+  body.game-active.mobile-campaign .toast { bottom: calc(61px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 950px) and (orientation: portrait) {
+  body.game-active .campaign-rotate-overlay {
+    position: fixed; inset: 0; z-index: 2900; display: grid; place-items: center; padding: 24px;
+    background: radial-gradient(circle at 50% 35%,rgba(84,65,29,.28),transparent 40%),#080c12;
+  }
+  .campaign-rotate-card { width: min(360px,90vw); padding: 28px 22px; border: 1px solid #66522b; border-radius: 16px; background: #121923; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,.6); }
+  .campaign-rotate-card .rotate-phone { margin-bottom: 14px; color: #edca72; font-size: 46px; line-height: 1; }
+  .campaign-rotate-card strong { display: block; font: 800 20px/1.4 Georgia,"Yu Mincho",serif; color: #fff0bd; }
+  .campaign-rotate-card small { display: block; margin-top: 10px; color: #aeb9c7; line-height: 1.6; }
+}
+
+@media (max-width: 950px) and (orientation: landscape) {
+  body.game-active.mobile-campaign .castle-profile-mini { width: 15px; height: 15px; left: 3px; top: 3px; font-size: 6px; }
+  body.game-active.mobile-campaign .castle-identity-card { grid-template-columns: 34px minmax(0,1fr); gap: 7px; margin: 5px 0; padding: 6px 7px; }
+  body.game-active.mobile-campaign .castle-identity-icon { width: 34px; height: 34px; font-size: 10px; }
+  body.game-active.mobile-campaign .castle-identity-card strong { font-size: 11px; }
+  body.game-active.mobile-campaign .castle-identity-card p { margin: 1px 0 3px; font-size: 7px; line-height: 1.25; }
+  body.game-active.mobile-campaign .castle-trait-tags em { padding: 1px 4px; font-size: 6px; }
+  body.game-active.mobile-campaign .assignment-strip { gap: 4px; margin: 5px 0; }
+  body.game-active.mobile-campaign .assignment-strip span { padding: 4px 5px; }
+  body.game-active.mobile-campaign .assignment-strip small { font-size: 6px; }
+  body.game-active.mobile-campaign .assignment-strip strong { font-size: 8px; }
+  body.game-active.mobile-campaign .assignment-chip { font-size: 6px; }
+  body.game-active.mobile-campaign .assignment-record { padding: 6px 7px; }
+}

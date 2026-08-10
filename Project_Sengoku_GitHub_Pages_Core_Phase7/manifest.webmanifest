@@ -1,0 +1,10 @@
+{
+  "name": "Project Sengoku Strategic Campaign v0.3",
+  "short_name": "Sengoku v0.3",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#090c12",
+  "theme_color": "#090c12"
+}

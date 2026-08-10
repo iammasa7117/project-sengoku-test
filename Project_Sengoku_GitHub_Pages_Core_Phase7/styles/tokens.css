@@ -1,0 +1,7 @@
+:root {
+  --bg: #090c12; --panel: #121923; --panel-2: #192332; --line: #344257;
+  --text: #f4f0e6; --muted: #9eaaba; --gold: #e2b95c; --gold-2: #f4d486;
+  --blue: #4f84e8; --red: #d65353; --green: #55bd78; --danger: #e37974;
+  --shadow: 0 22px 65px rgba(0,0,0,.43); --radius: 10px;
+  font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+}

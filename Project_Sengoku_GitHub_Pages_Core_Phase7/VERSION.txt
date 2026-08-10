@@ -1,0 +1,3 @@
+Project Sengoku Strategic Campaign v0.3
+Phase 7 — Strategic Depth / Mobile-first
+Base: Mobile Campaign v0.2 / Playable Sengoku Loop v0.1

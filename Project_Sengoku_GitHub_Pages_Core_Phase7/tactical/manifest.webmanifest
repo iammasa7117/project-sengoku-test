@@ -1,0 +1,9 @@
+{
+  "name": "Project Sengoku Tactical",
+  "short_name": "Sengoku",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#10130e",
+  "theme_color": "#10130e"
+}

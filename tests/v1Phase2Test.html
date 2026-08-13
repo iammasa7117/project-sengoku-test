@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Project Sengoku Core v1.0 Phase 2 Guidance Tests</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui,sans-serif; }
+    body { max-width: 900px; margin: 0 auto; padding: 32px 18px; background: #090c12; color: #f4f0e6; }
+    h1 { font-family: Georgia,"Yu Mincho",serif; }
+    #summary { padding: 14px; border: 1px solid #40516a; border-radius: 8px; background: #121923; }
+    .test { margin: 8px 0; padding: 12px; border-radius: 7px; background: #151e29; border: 1px solid #303e53; }
+    .pass { border-left: 5px solid #55bd78; }
+    .fail { border-left: 5px solid #d65353; }
+    small { display: block; margin-top: 5px; color: #aeb9c7; white-space: pre-wrap; }
+  </style>
+  <script defer src="../src/namespace.js"></script>
+  <script defer src="../src/config/constants.js"></script>
+  <script defer src="../src/config/balance.js"></script>
+  <script defer src="../src/data/factions.js"></script>
+  <script defer src="../src/data/castles.js"></script>
+  <script defer src="../src/data/castleTraits.js"></script>
+  <script defer src="../src/data/officers.js"></script>
+  <script defer src="../src/data/tactics.js"></script>
+  <script defer src="../src/data/unitTypes.js"></script>
+  <script defer src="../src/data/events.js"></script>
+  <script defer src="../src/data/contentPacks.js"></script>
+  <script defer src="../src/data/eventExtensions.js"></script>
+  <script defer src="../src/data/difficulties.js"></script>
+  <script defer src="../src/data/scenarios.js"></script>
+  <script defer src="../src/data/diplomacy.js"></script>
+  <script defer src="../src/state/schema.js"></script>
+  <script defer src="../src/state/createInitialState.js"></script>
+  <script defer src="../src/state/validateState.js"></script>
+  <script defer src="../src/state/migrateState.js"></script>
+  <script defer src="../src/systems/officerSystem.js"></script>
+  <script defer src="../src/systems/unitSystem.js"></script>
+  <script defer src="../src/systems/armySystem.js"></script>
+  <script defer src="../src/systems/relationshipSystem.js"></script>
+  <script defer src="../src/systems/loyaltySystem.js"></script>
+  <script defer src="../src/systems/rivalrySystem.js"></script>
+  <script defer src="../src/systems/eventSystem.js"></script>
+  <script defer src="../src/systems/prisonerSystem.js"></script>
+  <script defer src="../src/systems/diplomacySystem.js"></script>
+  <script defer src="../src/systems/releaseSystem.js"></script>
+  <script defer src="../src/systems/domesticSystem.js"></script>
+  <script defer src="../src/systems/victorySystem.js"></script>
+  <script defer src="../src/systems/siegeSystem.js"></script>
+  <script defer src="../src/systems/battleSystem.js"></script>
+  <script defer src="../src/systems/aiSystem.js"></script>
+  <script defer src="../src/systems/turnSystem.js"></script>
+  <script defer src="../src/systems/uxSystem.js"></script>
+  <script defer src="../src/save/saveSystem.js"></script>
+  <script defer src="../src/ui/uxGuide.js"></script>
+  <script defer src="testRunner.js"></script>
+  <script defer src="v1Phase2Tests.js"></script>
+</head>
+<body>
+  <h1>Project Sengoku Core v1.0 Phase 2</h1>
+  <p>初心者案内・表示設定・移行テスト</p>
+  <div id="summary">テスト準備中…</div>
+  <div id="results"></div>
+</body>
+</html>

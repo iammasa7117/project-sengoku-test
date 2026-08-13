@@ -1,0 +1,9 @@
+{
+  "id": "scenario_basic_b5_1",
+  "description": "B5.1 fixed 7 vs 7 tactical prototype fixture. Runtime constructs the same layout in battleState.js for file:// compatibility.",
+  "playerUnits": 7,
+  "enemyUnits": 7,
+  "logicalWidth": 1500,
+  "logicalHeight": 1000,
+  "frontLineGap": 720
+}

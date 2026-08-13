@@ -1,0 +1,203 @@
+.castle { position: absolute; transform: translate(-50%,-50%); width: 132px; padding: 10px; border-radius: 8px; color: white; background: #152033; border: 2px solid currentColor; box-shadow: 0 12px 25px rgba(0,0,0,.38); text-align: center; }
+.castle.f-aotsuki { color: #7caaff; background: rgba(23,43,78,.95); }
+.castle.f-tokizawa { color: #f07d79; background: rgba(68,28,31,.95); }
+.castle.f-yukishiro { color: #78d99a; background: rgba(24,67,45,.95); }
+.castle.selected { outline: 3px solid #ffe2a0; outline-offset: 5px; }
+.castle.scouted::after { content: "偵察済"; position: absolute; right: -9px; top: -10px; padding: 2px 5px; border-radius: 10px; background: #243044; color: #f3d786; font-size: 8px; }
+.castle strong, .castle small { display: block; }
+.castle small { margin-top: 4px; color: #dce4ef; font-size: 9px; }
+.castle-detail { padding: 14px; }
+.castle-title { display: flex; justify-content: space-between; align-items: flex-start; }
+.castle-title h3 { margin: 0; font-size: 27px; }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin: 12px 0; }
+.stat-grid div { padding: 9px 10px; background: #0c121a; border: 1px solid #29364a; border-radius: 6px; }
+.stat-grid span { color: var(--muted); font-size: 9px; }
+.stat-grid strong { float: right; }
+.officer-line { display: flex; align-items: center; gap: 8px; padding: 8px; border: 1px solid transparent; border-radius: 7px; cursor: pointer; }
+.officer-line:hover { background: #202b3a; border-color: #45566f; }
+.officer-seal { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid #526078; border-radius: 50%; color: var(--gold); font: 700 15px serif; }
+.officer-line small { display: block; color: var(--muted); }
+.command-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 10px; }
+.command { min-height: 60px; padding: 8px; background: #16202c; border: 1px solid #334258; border-radius: 7px; color: white; text-align: left; }
+.command strong, .command small { display: block; }
+.command small { margin-top: 3px; color: var(--muted); font-size: 8px; }
+.command.attack { border-color: #704047; }
+.end-turn { width: 100%; margin-top: 9px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(#3b2d17,#241c10); border: 1px solid #82642c; border-radius: 7px; color: #f2ce76; }
+.end-turn span { font-size: 9px; }
+.proposals { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; padding: 12px; }
+.proposal { padding: 11px; background: #151e29; border: 1px solid #303e53; border-radius: 7px; }
+.proposal h4 { margin: 3px 0 6px; font-size: 16px; }
+.proposal p { min-height: 48px; margin: 0; color: #b8c3d1; font-size: 10px; line-height: 1.5; }
+.proposal .button { width: 100%; margin-top: 9px; padding: 8px; font-size: 10px; }
+.modal-backdrop { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 18px; background: rgba(0,0,0,.76); backdrop-filter: blur(5px); }
+.modal { position: relative; width: min(760px,100%); max-height: 92vh; overflow: auto; padding: 25px; background: #121923; border: 1px solid #45536a; border-radius: 10px; box-shadow: 0 30px 100px #000; }
+.modal-close { position: absolute; right: 10px; top: 9px; width: 34px; height: 34px; border: 0; background: transparent; color: #a4b0c1; font-size: 25px; }
+.modal h2 { margin: 0 0 10px; font-size: 29px; }
+.modal p { color: #bdc7d4; line-height: 1.72; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 17px; flex-wrap: wrap; }
+.choices { display: grid; gap: 8px; margin-top: 12px; }
+.choice { padding: 12px; background: #17212e; border: 1px solid #35445a; border-radius: 7px; color: white; text-align: left; }
+.choice strong, .choice small { display: block; }
+.choice small { margin-top: 4px; color: #aeb9c7; font-size: 9px; }
+.choice:disabled { cursor: not-allowed; opacity: .72; }
+.event-view { max-height: 78vh; overflow-y: auto; overscroll-behavior: contain; }
+.event-choices { grid-template-columns: 1fr; }
+.event-choice:focus-visible { outline: 3px solid #e2b95c; outline-offset: 2px; }
+.field { display: block; margin: 11px 0; }
+.field span { display: block; margin-bottom: 5px; color: var(--muted); font-size: 9px; }
+.field select, .field input, .field textarea { width: 100%; padding: 11px; background: #0f1620; color: white; border: 1px solid #35445a; border-radius: 6px; }
+.field textarea { min-height: 180px; font-family: ui-monospace, monospace; font-size: 11px; }
+.record { padding: 10px 0; border-bottom: 1px solid #2c394c; }
+.record strong { color: var(--gold-2); }
+.loyalty-meter { height: 9px; margin: 9px 0; background: #090e15; border: 1px solid #2e3a4d; border-radius: 9px; overflow: hidden; }
+.loyalty-meter i { display: block; height: 100%; background: linear-gradient(90deg,#b63f45,#e0b95c 48%,#55bd78); }
+.toast { position: fixed; left: 50%; bottom: 24px; z-index: 90; transform: translate(-50%,15px); opacity: 0; padding: 10px 16px; background: #202a38; border: 1px solid #4b5c73; border-radius: 6px; transition: .2s; pointer-events: none; }
+.toast.show { transform: translate(-50%,0); opacity: 1; }
+.toast.error { border-color: #a34d55; color: #ffd9d6; }
+.debug-panel { position: fixed; z-index: 70; top: 10px; right: 10px; width: min(430px,calc(100vw - 20px)); max-height: calc(100vh - 20px); overflow: auto; padding: 14px; background: rgba(8,12,18,.98); border: 1px solid #7b6530; border-radius: 8px; box-shadow: var(--shadow); }
+.debug-panel h3 { margin: 0 0 8px; }
+.debug-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.debug-panel pre { max-height: 250px; overflow: auto; padding: 8px; background: #030507; color: #bcd0e5; font-size: 9px; white-space: pre-wrap; }
+.diplomacy-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 7px; margin: 12px 0; }
+.diplomacy-stats div { padding: 9px; background: #0c121a; border: 1px solid #29364a; border-radius: 6px; }
+.diplomacy-stats span,.diplomacy-stats strong { display: block; }
+.diplomacy-stats span { color: var(--muted); font-size: 9px; }
+.diplomacy-actions { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; margin: 12px 0; }
+.diplomacy-actions .button { min-height: 52px; text-align: left; }
+.diplomacy-actions small { display: block; margin-top: 3px; color: var(--muted); font-size: 8px; }
+.diplomacy-actions button:disabled { opacity: .45; cursor: not-allowed; }
+.diplomacy-options { margin-top: 12px; padding: 10px; border: 1px solid #35445a; border-radius: 7px; }
+
+.guide-primary { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 16px; border: 1px solid #4d5d76; border-radius: 10px; background: linear-gradient(135deg,rgba(31,44,61,.98),rgba(21,29,41,.98)); box-shadow: var(--shadow); }
+.guide-primary strong { display: block; color: var(--gold-2); font-size: 18px; }
+.guide-primary p:not(.kicker) { margin: 5px 0 0; color: #c3cedb; line-height: 1.55; font-size: 12px; }
+.guide-actions { display: flex; gap: 8px; flex-wrap: wrap; flex: 0 0 auto; }
+.tutorial-checklist { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 15px; margin-top: 8px; padding: 10px 14px; border: 1px solid #344257; border-radius: 8px; background: rgba(9,14,21,.93); }
+.tutorial-checklist ol { display: flex; gap: 8px 14px; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
+.tutorial-checklist li { color: #c4ceda; font-size: 10px; }
+.tutorial-checklist li span { display: inline-block; width: 18px; color: #7f8b9c; }
+.tutorial-checklist li.done { color: #85d8a2; text-decoration: line-through; text-decoration-thickness: 1px; }
+.tutorial-checklist li.done span { color: #85d8a2; }
+.help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+.help-grid section, details { padding: 12px; border: 1px solid #344257; border-radius: 8px; background: #0d141e; }
+.help-grid h3 { margin-top: 0; }
+details { margin-top: 9px; }
+summary { cursor: pointer; color: var(--gold-2); font-weight: 900; }
+.glossary { display: grid; grid-template-columns: max-content 1fr; gap: 8px 12px; }
+.glossary dt { color: var(--gold-2); font-weight: 900; }
+.glossary dd { margin: 0; color: #bec9d6; }
+.settings-list { display: grid; gap: 8px; margin: 14px 0; }
+.toggle-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px; border: 1px solid #344257; border-radius: 8px; background: #0d141e; }
+.toggle-row span { display: block; }
+.toggle-row strong, .toggle-row small { display: block; }
+.toggle-row small { margin-top: 4px; color: var(--muted); }
+.toggle-row input { width: 24px; height: 24px; flex: 0 0 auto; accent-color: var(--gold); }
+.setup-guide-toggle { margin: 11px 0; }
+.officer-line { width: 100%; background: transparent; color: inherit; text-align: left; }
+.officer-line > span:last-child { min-width: 0; }
+.mobile-nav button[aria-current="page"] { color: var(--gold-2); border-color: var(--gold); }
+
+/* Core v1.0 final readability */
+.modal, .record, .proposal, .choice, .guide-primary { overflow-wrap: anywhere; }
+.modal pre { max-width: 100%; overflow: auto; }
+.ending-stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin: 16px 0; }
+.ending-stats div { min-width: 0; padding: 11px; border: 1px solid #344257; border-radius: 8px; background: #0d141e; }
+.ending-stats span, .ending-stats strong { display: block; }
+.ending-stats span { color: var(--muted); font-size: 9px; }
+.ending-stats strong { margin-top: 4px; color: var(--gold-2); }
+:focus-visible { outline: 3px solid #e2b95c; outline-offset: 2px; }
+
+/* Playable Loop Phase 2: mobile-first Army Marching */
+.army-layer { position: absolute; inset: 0; z-index: 6; pointer-events: none; }
+.army-marker { position: absolute; transform: translate(-50%,-50%); min-width: 112px; min-height: 52px; padding: 7px 9px 7px 34px; border: 2px solid #e6c76e; border-radius: 10px; background: rgba(27,31,39,.96); color: #fff5d6; text-align: left; box-shadow: 0 12px 28px rgba(0,0,0,.48); pointer-events: auto; z-index: 8; }
+.army-marker.player { border-color: #f0cf7a; background: linear-gradient(145deg,rgba(55,45,23,.98),rgba(24,29,38,.98)); }
+.army-marker.enemy { border-color: #e16f6b; }
+.army-marker strong, .army-marker small { display: block; white-space: nowrap; }
+.army-marker strong { font-size: 11px; }
+.army-marker small { margin-top: 2px; color: #d7dce4; font-size: 8px; }
+.army-flag { position: absolute; left: 8px; top: 9px; display: grid; place-items: center; width: 20px; height: 30px; background: #e0b95c; color: #17110a; font: 900 12px serif; clip-path: polygon(0 0,100% 0,100% 74%,50% 100%,0 74%); }
+.army-summary-strip { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 7px; margin: 12px 0; }
+.army-summary-strip span { min-width: 0; padding: 9px; border: 1px solid #344257; border-radius: 7px; background: #0d141e; color: var(--muted); font-size: 9px; }
+.army-summary-strip strong { display: block; margin-top: 4px; color: var(--gold-2); font-size: 13px; overflow-wrap: anywhere; }
+.army-unit-builder { display: grid; gap: 9px; margin: 12px 0; }
+.army-unit-card { padding: 11px; border: 1px solid #344257; border-radius: 9px; background: #0d141e; }
+.army-unit-card.commander { border-color: #876b2d; background: linear-gradient(145deg,#17160f,#0d141e); }
+.army-unit-card .field { margin: 7px 0; }
+.army-unit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.army-detail-units { display: grid; gap: 0; }
+
+
+/* Playable Loop Phase 3: Domestic MVP */
+.domestic-stats { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.domestic-economy-strip { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 7px; margin: 10px 0 12px; }
+.domestic-economy-strip span { min-width: 0; padding: 8px 9px; border: 1px solid #3b4659; border-radius: 7px; background: linear-gradient(145deg,#101923,#0a1119); color: var(--muted); font-size: 8px; }
+.domestic-economy-strip strong { display: block; margin-top: 3px; color: var(--gold-2); font-size: 12px; overflow-wrap: anywhere; }
+.army-cost-strip { margin-top: 8px; }
+.army-upkeep-hint { padding: 9px 10px; border-left: 3px solid #8b6e31; background: rgba(50,41,21,.38); border-radius: 5px; }
+
+/* Phase 4: full-screen mobile Tactical Battle boundary */
+.tactical-overlay { position: fixed; inset: 0; z-index: 3000; width: 100vw; height: 100dvh; background: #080b0d; padding: 0; margin: 0; }
+.tactical-overlay.hidden { display: none !important; }
+.tactical-overlay iframe { width: 100%; height: 100%; border: 0; display: block; background: #10130e; }
+body.tactical-open { overflow: hidden; touch-action: none; }
+.army-marker.in-battle { z-index: 12; box-shadow: 0 0 0 2px rgba(221,179,79,.65), 0 0 22px rgba(221,93,63,.55); }
+.army-marker.in-battle .army-flag { animation: tacticalPulse 1.1s ease-in-out infinite alternate; }
+@keyframes tacticalPulse { from { transform: scale(.94); } to { transform: scale(1.08); } }
+
+/* Phase 5 — Siege / occupation loop */
+.army-marker.besieging { z-index: 13; border-color: #e29c45; box-shadow: 0 0 0 2px rgba(226,156,69,.4), 0 0 24px rgba(202,79,42,.5); }
+.army-marker.besieging .army-flag { background: #d96a3d; color: #fff6e7; animation: siegePulse 1.25s ease-in-out infinite alternate; }
+@keyframes siegePulse { from { transform: translateY(0) scale(.96); } to { transform: translateY(-2px) scale(1.06); } }
+.siege-status-card, .siege-result { margin: 10px 0; padding: 11px 12px; border: 1px solid #805d2b; border-radius: 9px; background: linear-gradient(145deg,rgba(62,39,22,.9),rgba(18,21,27,.98)); }
+.siege-status-card strong, .siege-result strong { color: #f2d38a; }
+.siege-status-card p, .siege-result p { margin: 6px 0; }
+.siege-status-card small, .siege-result small { color: #d9c8a5; }
+.siege-meter { height: 8px; margin: 8px 0; overflow: hidden; border: 1px solid #4c3d2a; border-radius: 999px; background: #090c10; }
+.siege-meter > span { display: block; height: 100%; max-width: 100%; border-radius: inherit; background: linear-gradient(90deg,#b85e39,#e8bd63); }
+.siege-result.captured { border-color: #7a6d2d; background: linear-gradient(145deg,rgba(56,53,20,.82),rgba(19,26,23,.98)); }
+.siege-result.holding { border-color: #9a562f; }
+
+/* Phase 6 — Mobile Campaign UX */
+.mobile-selection-dock { display: none; }
+.campaign-rotate-overlay { display: none; }
+.mobile-nav button span, .mobile-nav button strong { display: block; }
+.mobile-nav button span { font: 800 16px/1 Georgia,"Yu Mincho",serif; color: #e7c76f; }
+.mobile-nav button strong { margin-top: 2px; font-size: 9px; }
+.mobile-nav button[aria-current="page"] { border-color: #876b2d; background: linear-gradient(180deg,rgba(76,61,29,.6),rgba(24,30,39,.95)); color: #fff3d0; }
+.mobile-nav [data-mobile-end-turn] { border-color: rgba(185,134,49,.48); background: rgba(80,57,24,.42); }
+
+/* Phase 7 — strategic depth: castle identity, officer roles, strategic routes */
+.castle-profile-mini { position: absolute; left: 5px; top: 5px; display: grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; border: 1px solid currentColor; background: rgba(5,8,12,.55); font-style: normal; font-size: 8px; }
+.castle-identity-card { display: grid; grid-template-columns: 46px minmax(0,1fr); gap: 10px; align-items: start; margin: 9px 0; padding: 10px; border: 1px solid #46546a; border-radius: 9px; background: linear-gradient(135deg,#161f2b,#0d141e); }
+.castle-identity-icon { display: grid; place-items: center; width: 46px; height: 46px; border: 1px solid #806833; border-radius: 50%; background: #2b2416; color: #f0cf78; font: 800 14px/1 Georgia,"Yu Mincho",serif; }
+.castle-identity-card small,.castle-identity-card strong,.castle-identity-card p { display: block; }
+.castle-identity-card small { color: #91a0b3; font-size: 8px; }
+.castle-identity-card strong { color: #f7df9b; font-size: 15px; }
+.castle-identity-card p { margin: 3px 0 5px; color: #bec9d6; font-size: 9px; line-height: 1.45; }
+.castle-trait-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.castle-trait-tags em { padding: 2px 6px; border: 1px solid #4b5b72; border-radius: 999px; color: #ccd5e0; background: #111a26; font-style: normal; font-size: 7px; }
+.assignment-strip { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px; margin: 7px 0; }
+.assignment-strip span { min-width: 0; padding: 6px 7px; border: 1px solid #3b485c; border-radius: 6px; background: #101823; }
+.assignment-strip small,.assignment-strip strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.assignment-strip small { color: #8e9bad; font-size: 7px; }
+.assignment-strip strong { margin-top: 2px; color: #f0d581; font-size: 10px; }
+.assignment-chip { display: inline-block; margin-left: 5px; padding: 1px 5px; border: 1px solid #59677a; border-radius: 999px; color: #bdc7d3; background: #111923; font-style: normal; font-size: 7px; vertical-align: 2px; }
+.assignment-chip.assignment-governor,.assignment-record.assignment-governor { border-color: #8b6f32; color: #f2d27d; }
+.assignment-chip.assignment-domestic,.assignment-record.assignment-domestic { border-color: #4e795d; color: #9bdfaf; }
+.assignment-chip.assignment-army,.assignment-record.assignment-army { border-color: #81494b; color: #f0a6a8; }
+.assignment-record { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; margin: 10px 0; padding: 8px 10px; border: 1px solid #46546a; border-radius: 7px; background: #0d151f; }
+.assignment-record span,.assignment-record small { color: #8f9bad; font-size: 8px; }
+.assignment-record strong { color: inherit; }
+.strategic-route-record { border: 1px solid #52627a; border-radius: 7px; padding: 8px 10px; background: #0e1721; }
+
+/* Phase 8 — Living Front */
+.army-marker.enemy.threat { border-color:#ff5f57; box-shadow:0 0 0 2px rgba(255,95,87,.28),0 0 28px rgba(255,72,64,.55),0 12px 28px rgba(0,0,0,.48); }
+.army-marker.enemy.threat .army-flag { background:#b92f2b; color:#fff; animation:livingFrontThreatPulse .85s ease-in-out infinite alternate; }
+@keyframes livingFrontThreatPulse { from { transform:scale(.94); filter:brightness(.9); } to { transform:scale(1.08); filter:brightness(1.25); } }
+
+.army-marker.player.intercept { border-color:#f3c94b; box-shadow:0 0 0 2px rgba(243,201,75,.28),0 0 28px rgba(243,201,75,.35),0 12px 28px rgba(0,0,0,.48); }
+.army-marker.player.intercept .army-flag { background:#8b6414; color:#fff4bf; }
+.army-marker.returning { opacity:.82; border-style:dashed; filter:saturate(.72); }
+.army-marker.returning .army-flag { background:#5d6570; color:#f3f5f7; animation:none; }
+.pursuit-card { border-color:#8a6d2f; background:linear-gradient(145deg,rgba(63,49,18,.9),rgba(18,21,27,.98)); }
+.pursuit-card.resolved { border-color:#586579; background:linear-gradient(145deg,rgba(34,42,53,.9),rgba(18,21,27,.98)); }

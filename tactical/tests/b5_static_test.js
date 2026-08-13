@@ -1,0 +1,20 @@
+const fs=require('fs'),path=require('path');
+const root=path.join(__dirname,'..');
+function assert(c,m){if(!c)throw new Error(m);}
+const files=[];function walk(d){for(const n of fs.readdirSync(d)){const p=path.join(d,n),st=fs.statSync(p);if(st.isDirectory())walk(p);else files.push(p);}}walk(root);
+const js=files.filter(f=>f.endsWith('.js')).map(f=>fs.readFileSync(f,'utf8')).join('\n');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const css=fs.readFileSync(path.join(root,'css','battle.css'),'utf8');
+assert(!/\beval\s*\(/.test(js),'eval found');
+assert(!/new\s+Function\s*\(/.test(js),'new Function found');
+assert(!/\bfetch\s*\(/.test(js),'fetch found');
+assert(!/<script[^>]+src=["']https?:/.test(html),'external script found');
+assert(!/<link[^>]+href=["']https?:/.test(html),'external stylesheet found');
+assert(!/type=["']module["']/.test(html),'ES module found');
+assert(!html.includes('id="chargeBtn"'),'legacy charge button should be removed in B5.3');
+assert(js.includes('FLANK!')&&js.includes('REAR!')&&js.includes('CHARGE!'),'impact labels missing');
+assert(js.includes('pointerdown'),'Pointer Events missing');
+assert(css.includes('min-width:44px')||css.includes('min-width: 44px'),'mobile tap target baseline missing');
+assert(js.includes('range:200')&&js.includes('reloadTicks:24'),'teppo range/reload definition missing');
+assert(js.includes('ashigaru:{ashigaru:1.0,samurai:0.9,teppo:1.1,kiba:1.3}'),'matchup table missing');
+console.log('B5 static checks: 12/12 PASS');

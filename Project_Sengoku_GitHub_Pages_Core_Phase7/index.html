@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="ja">
 <head>
+  <!-- Strategic Visual UI-1 baseline retained; Strategic Visual UI-2 command layer retained; Phase 12 adds commander capture, escape outcomes, and over-pursuit risk while preserving Phase 11 pursuit doctrine. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#090c12">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="manifest" href="manifest.webmanifest">
-  <title>Project Sengoku — Strategic Campaign v0.3</title>
+  <title>Project Sengoku — Living Front v0.4 / Phase 12 Pursuit Risk & Capture</title>
   <link rel="stylesheet" href="styles/tokens.css">
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/strategicVisual.css">
   <link rel="stylesheet" href="styles/responsive.css">
   <script defer src="src/namespace.js"></script>
   <script defer src="src/config/constants.js"></script>
@@ -59,6 +61,8 @@
   <script defer src="src/ui/renderArmy.js"></script>
   <script defer src="src/ui/renderBattle.js"></script>
   <script defer src="src/ui/renderModals.js"></script>
+  <script defer src="src/ui/strategicVisual.js"></script>
+  <script defer src="src/ui/commandVisual.js"></script>
   <script defer src="src/ui/renderEvents.js"></script>
   <script defer src="src/ui/renderDiplomacy.js"></script>
   <script defer src="src/ui/debugPanel.js"></script>
@@ -77,7 +81,7 @@
         <button id="continueButton" class="button secondary">続きから</button>
         <button id="helpButton" class="button secondary">遊び方</button>
       </div>
-      <p class="version">STRATEGIC CAMPAIGN v0.3 — PHASE 7 / CASTLE IDENTITY · OFFICER ROLES · STRATEGIC ROUTES</p>
+      <p class="version">PHASE 12 — PURSUIT RISK / CAPTURE & ESCAPE</p>
     </div>
   </section>
 

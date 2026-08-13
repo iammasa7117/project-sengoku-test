@@ -1,3 +1,25 @@
+# Phase 12 — Pursuit Risk / Commander Capture & Escape
+
+> **Phase 12:** Phase 11の追撃Doctrineを維持しつつ、追撃時に敵総大将の捕縛/逃亡と深追いリスクを追加。捕縛は既存Prisoner・登用・解放・捕虜交換へ接続し、深追い事故では勝者総大将に追加疲労・体力損耗・軽傷の可能性があります。`schemaVersion 12`、Core/Tactical境界、Siege、既存Save互換を維持。詳細: `PHASE12_PURSUIT_RISK_CAPTURE_REPORT.md` / 実機手順: `README_TESTPLAY_MOBILE_PHASE12.md`
+
+# Phase 10 — Battle Aftermath / Retreat & Pursuit
+
+> **Phase 10:** Phase 9.1のField Battleを基準に、敗軍が即消滅せず「退」旗で敗走する戦後処理と、Player勝利時の「追撃する / 追撃しない」判断を追加。`schemaVersion 12`、Core/Tactical境界、Siege、UI-2、既存Save互換を維持しています。詳細: `PHASE10_BATTLE_AFTERMATH_PURSUIT_REPORT.md` / 実機手順: `README_TESTPLAY_MOBILE_PHASE10.md`
+
+> **Phase 9.1:** Phase 9のArmy Interception / Field Battleを安定化。迎撃Army詳細UI、同季二重野戦防止、Tactical割込み後のArmy season再開、Save/Load互換を追加。詳細: `PHASE9_1_STABILIZATION_REPORT.md`
+
+> **Phase UI-2:** UI-1の城・内政・家臣・登用に加え、軍団編成・出陣準備・外交・評定を同じモバイル戦国ゲームUIへ統一。
+
+> **Phase UI-1:** 城詳細・内政・家臣一覧・人材登用をモバイル戦国ゲームUIへ再設計。
+
+# Phase 8 — Living Front v0.4
+
+AI勢力も実際のArmy Entityとして地図上を進軍するMobile-first戦国キャンペーン版です。敵侵攻Army、AI援軍、Threat/ETA表示を追加しました。戦闘・セーブ・外交等の既存機能は維持しています。
+
+詳細: `PHASE8_LIVING_FRONT_REPORT.md` / 実機手順: `README_TESTPLAY_MOBILE_PHASE8.md`
+
+---
+
 # Project Sengoku Strategic Campaign v0.3 — Phase 7
 
 > **Playable Sengoku Loop v0.1とPhase 6のスマホ横画面UXを維持し、城・武将配置・進軍路に戦略的な意味を追加した版です。** schemaVersionは12のままで、既存セーブ構造を破壊しません。
@@ -26,7 +48,7 @@ Core v1.0 Phase 1のセーブ安定化とPhase 2の初心者案内・モバイ�
 ## 起動方法
 
 1. ZIPを解凍します。
-2. `Project_Sengoku_Core_Phase7_StrategicDepth/01_START_GAME.html`をChrome、Safari、Edgeなどで直接開きます。
+2. `01_START_GAME.html`をChrome、Safari、Edgeなどで直接開きます。
 3. 「新しい戦を始める」からシナリオ、勢力、難易度を選びます。
 
 ローカルサーバー、npm、ビルド、インストールは不要です。外部ライブラリ、`fetch()`、ES Modulesを使用せず、グローバル名前空間は`window.Sengoku`だけです。
@@ -269,3 +291,8 @@ Project_Sengoku_Core_v1_0/
 - personality/traitレジストリとStory Arc基盤は拡張点だけで、正式データは空です。
 - この実行環境では`file://`のSafari・Chrome・iPhone実操作を行っていません。DOMスモーク、静的参照検査、Nodeテストで直接起動構成を検証しています。
 - ブラウザの保存領域が制限される場合、ゲームは動作しますが`localStorage`へ保存できません。
+
+
+## Phase 9 — Field Battle / Interception
+
+敵Armyが自城へ向かう最終街道区間に入ると、城から迎撃Armyを出せます。同一街道でArmy同士が接触すると野戦が発生し、プレイヤー参加時はTactical B5.3で直接指揮します。野戦は城所有権を直接変更せず、敗軍撤退・勝軍継続を処理します。

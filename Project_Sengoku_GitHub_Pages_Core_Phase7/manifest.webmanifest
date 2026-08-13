@@ -1,10 +1,10 @@
 {
-  "name": "Project Sengoku Strategic Campaign v0.3",
-  "short_name": "Sengoku v0.3",
+  "name": "Project Sengoku Living Front v0.4 - Strategic Visual UI-1",
+  "short_name": "Sengoku UI-1",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "landscape",
   "background_color": "#090c12",
-  "theme_color": "#090c12"
+  "theme_color": "#0b1c35"
 }

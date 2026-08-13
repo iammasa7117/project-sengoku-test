@@ -18,6 +18,7 @@
     if (document.body && document.body.classList) document.body.classList.add("modal-open");
     U.eventModalOpen = Boolean(options.event);
     if (modal && modal.setAttribute) {
+      modal.className = "modal" + (options.modalClass ? " " + options.modalClass : "");
       modal.setAttribute("aria-labelledby", headingId);
       modal.setAttribute("tabindex", "-1");
     }

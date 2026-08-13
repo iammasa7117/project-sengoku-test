@@ -30,20 +30,21 @@
 
     if (armyLayer && S.Systems.Army) {
       S.Systems.Army.all(state).forEach(function (army) {
-        if (army.status !== "marching" && army.status !== "in_battle" && army.status !== "besieging") return;
+        if (army.status !== "marching" && army.status !== "in_battle" && army.status !== "besieging" && army.status !== "returning") return;
         var loc = army.currentLocation || {}, from = state.castles[loc.fromCastleId || army.originCastleId], to = state.castles[loc.toCastleId || army.destinationCastleId];
         if (!from || !to) return;
         var fixedAtTarget = army.status === "in_battle" || army.status === "besieging";
         var x = fixedAtTarget ? to.x : (from.x + to.x) / 2, y = fixedAtTarget ? to.y : (from.y + to.y) / 2;
         var commander = state.officers[army.commanderId], marker = document.createElement("button");
         marker.type = "button";
-        marker.className = "army-marker" + (army.factionId === state.campaign.playerFactionId ? " player" : " enemy") + (army.status === "in_battle" ? " in-battle" : "") + (army.status === "besieging" ? " besieging" : "");
+        marker.className = "army-marker" + (army.factionId === state.campaign.playerFactionId ? " player" : " enemy") + (army.mission === "intercept" ? " intercept" : "") + ((army.status === "marching" && army.factionId !== state.campaign.playerFactionId && army.destinationCastleId && state.castles[army.destinationCastleId] && state.castles[army.destinationCastleId].factionId === state.campaign.playerFactionId) ? " threat" : "") + (army.status === "in_battle" ? " in-battle" : "") + (army.status === "besieging" ? " besieging" : "") + (army.status === "returning" ? " returning" : "");
         marker.style.left = x + "%"; marker.style.top = y + "%";
         marker.dataset.armyId = army.id;
-        var eta = army.status === "marching" && S.Systems.Army.remainingEta ? S.Systems.Army.remainingEta(state, army) : 0;
-        var statusText = army.status === "in_battle" ? to.name + "で会戦待機" : army.status === "besieging" ? to.name + "を包囲中" : to.name + "へ進軍中（残り約" + eta + "季）";
+        var eta = (army.status === "marching" || army.status === "returning") && S.Systems.Army.remainingEta ? S.Systems.Army.remainingEta(state, army) : 0;
+        var missionLabel = army.status === "returning" ? "敗走軍" : army.mission === "reinforce" ? "援軍" : army.mission === "intercept" ? "迎撃軍" : "軍";
+        var statusText = army.status === "in_battle" ? to.name + "で会戦待機" : army.status === "besieging" ? to.name + "を包囲中" : army.status === "returning" ? to.name + "へ敗走中（残り約" + eta + "季）" : to.name + "へ" + (army.mission === "reinforce" ? "援軍移動中" : army.mission === "intercept" ? "迎撃進軍中" : "進軍中") + "（残り約" + eta + "季）";
         marker.setAttribute("aria-label", (commander ? commander.name : army.id) + "隊、" + statusText + "、兵力" + S.Systems.Army.totalTroops(state, army));
-        marker.innerHTML = "<span class=\"army-flag\">" + (army.status === "in_battle" ? "戦" : army.status === "besieging" ? "囲" : "軍") + "</span><strong>" + S.UI.escape(commander ? commander.name : "軍勢") + "隊</strong><small>兵" + S.Systems.Army.totalTroops(state, army) + (army.status === "in_battle" ? " / 会戦待機" : army.status === "besieging" ? " / 包囲中" : " → " + S.UI.escape(to.name) + " / 約" + eta + "季") + "</small>";
+        marker.innerHTML = "<span class=\"army-flag\">" + (army.status === "in_battle" ? "戦" : army.status === "besieging" ? "囲" : army.status === "returning" ? "退" : army.mission === "reinforce" ? "援" : army.mission === "intercept" ? "迎" : "軍") + "</span><strong>" + S.UI.escape(commander ? commander.name : "軍勢") + "隊</strong><small>兵" + S.Systems.Army.totalTroops(state, army) + (army.status === "in_battle" ? " / 会戦待機" : army.status === "besieging" ? " / 包囲中" : army.status === "returning" ? " → " + S.UI.escape(to.name) + " / 敗走 約" + eta + "季" : " → " + S.UI.escape(to.name) + " / 約" + eta + "季") + "</small>";
         armyLayer.appendChild(marker);
       });
     }
@@ -54,7 +55,10 @@
       var fieldArmies = S.Systems.Army ? S.Systems.Army.forFaction(state, state.campaign.playerFactionId).filter(function (army) { return army.originCastleId === selected.id || army.destinationCastleId === selected.id; }) : [];
       var armyText = fieldArmies.length ? " 進軍中軍勢" + fieldArmies.length + "。" : "";
       var selectedProfile = S.Data && S.Data.getCastleProfile ? S.Data.getCastleProfile(selected) : { title: "城郭" };
-      S.UI.el("mapNote").textContent = isFriendly ? selected.name + "［" + selectedProfile.title + "］は" + state.factions[state.campaign.playerFactionId].name + "の領地です。守備兵" + selected.troops + "、士気" + selected.morale + "。" + armyText : hasIntel ? selected.name + "［" + selectedProfile.title + "］の兵力は" + selected.troops + "、防備Lv." + selected.defense + "。" : selected.name + "［" + selectedProfile.title + "］の詳しい兵力は不明です。偵察で情報を得られます。";
+      var threats = S.Systems.Army.threatsAgainstFaction ? S.Systems.Army.threatsAgainstFaction(state, state.campaign.playerFactionId) : [];
+      var directThreats = threats.filter(function (army) { return army.destinationCastleId === selected.id; });
+      var threatText = directThreats.length ? "⚠ 敵軍" + directThreats.length + "隊接近（最短" + S.Systems.Army.remainingEta(state, directThreats[0]) + "季）。 " : "";
+      S.UI.el("mapNote").textContent = threatText + (isFriendly ? selected.name + "［" + selectedProfile.title + "］は" + state.factions[state.campaign.playerFactionId].name + "の領地です。守備兵" + selected.troops + "、士気" + selected.morale + "。" + armyText : hasIntel ? selected.name + "［" + selectedProfile.title + "］の兵力は" + selected.troops + "、防備Lv." + selected.defense + "。" : selected.name + "［" + selectedProfile.title + "］の詳しい兵力は不明です。偵察で情報を得られます。");
     }
   };
 })(window.Sengoku);
